@@ -1,0 +1,24 @@
+{
+    description = "C/C++-dev env w/ gcc, gdb, make & pkg-config";
+
+    inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
+    outputs = { self, nixpkgs }:
+    let
+        system = "x86_64-linux";
+        pkgs = import nixpkgs { inherit system; };
+    in
+    {
+        devShells.${system}.default = pkgs.mkShell {
+            buildInputs = [
+                pkgs.gcc
+                pkgs.gdb
+                pkgs.make
+                pkgs.pkg-config
+            ];
+            shellHook = ''
+                echo "C/C++ development environment ready"
+            '';
+        };
+    };
+}
