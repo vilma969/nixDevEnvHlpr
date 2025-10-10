@@ -1,5 +1,5 @@
 {
-    description = "C/C++-dev env w/ gcc, gdb, make & pkg-config";
+    description = "C/C++-dev env w/ gcc, gdb & make";
 
     inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
@@ -14,7 +14,6 @@
                 pkgs.gcc
                 pkgs.gdb
                 pkgs.make
-                pkgs.pkg-config
             ];
             shellHook = ''
                 echo "C/C++ development environment ready"
