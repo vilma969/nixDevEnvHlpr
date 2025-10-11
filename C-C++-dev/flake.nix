@@ -12,6 +12,7 @@
         devShells.${system}.default = pkgs.mkShell {
             buildInputs = [
                 pkgs.gcc
+                pkgs.g++
                 pkgs.gdb
                 pkgs.make
             ];
