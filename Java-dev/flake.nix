@@ -11,6 +11,7 @@
     {
         devShells.${system}.default = pkgs.mkShell {
             buildInputs = [
+                pkgs.vscode-fhs
                 pkgs.jdk25
                 pkgs.maven
             ];
