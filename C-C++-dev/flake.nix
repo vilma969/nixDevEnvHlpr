@@ -1,5 +1,5 @@
 {
-    description = "C/C++-dev env w/ gcc, gdb & make";
+    description = "C/C++-dev env w/ gcc & gdb";
 
     inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
@@ -12,9 +12,7 @@
         devShells.${system}.default = pkgs.mkShell {
             buildInputs = [
                 pkgs.gcc
-                pkgs.g++
                 pkgs.gdb
-                pkgs.make
             ];
             shellHook = ''
                 echo "C/C++ development environment ready"
