@@ -20,7 +20,7 @@
                 export MAVEN_OPTS="-Dmaven.repo.local=/tmp/maven-packages"
 
                 if [ "$(id --user)" -eq 0 ]; then
-                    SIMULATED_USER=devuser
+                    SIMULATED_USER="devuser"
                     SIMULATED_HOME="$PWD/.${SIMULATED_USER}"
 
                     export USER="$SIMULATED_USER"

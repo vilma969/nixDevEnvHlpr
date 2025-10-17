@@ -17,7 +17,7 @@
             ];
             shellHook = ''
                 if [ "$(id --user)" -eq 0 ]; then
-                    SIMULATED_USER=devuser
+                    SIMULATED_USER="devuser"
                     SIMULATED_HOME="$PWD/.${SIMULATED_USER}"
 
                     export USER="$SIMULATED_USER"
