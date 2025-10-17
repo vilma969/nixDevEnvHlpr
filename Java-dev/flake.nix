@@ -23,11 +23,11 @@
                     SIMULATED_USER="devuser"
                     SIMULATED_HOME="$PWD/.${SIMULATED_USER}"
 
-                    export USER="$SIMULATED_USER"
-                    export LOGNAME="$SIMULATED_USER"
+                    export USER="${SIMULATED_USER}"
+                    export LOGNAME="${SIMULATED_USER}"
 
-                    mkdir -p "$SIMULATED_HOME"
-                    export HOME="$SIMULATED_HOME"
+                    mkdir -p "${SIMULATED_HOME}"
+                    export HOME="${SIMULATED_HOME}"
                 fi
 
                 echo "Java development environment ready"
