@@ -11,11 +11,22 @@
     {
         devShells.${system}.default = pkgs.mkShell {
             buildInputs = [
+                pkgs.vscode-fhs
                 pkgs.gcc
                 pkgs.gdb
             ];
             shellHook = ''
-                export PATH=$PATH:/home/afma/.vscode-server/bin/03c265b1adee71ac88f833e065f7bb956b60550a/bin/remote-cli/code
+                if [ "$(id --user)" -eq 0 ]; then
+                    SIMULATED_USER=devuser
+                    SIMULATED_HOME="$PWD/.${SIMULATED_USER}"
+
+                    export USER="$SIMULATED_USER"
+                    export LOGNAME="$SIMULATED_USER"
+
+                    mkdir -p "$SIMULATED_HOME"
+                    export HOME="$SIMULATED_HOME"
+                fi
+
                 echo "C/C++ development environment ready"
             '';
         };

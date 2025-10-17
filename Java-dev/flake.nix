@@ -19,6 +19,17 @@
                 mkdir -p /tmp/maven-packages
                 export MAVEN_OPTS="-Dmaven.repo.local=/tmp/maven-packages"
 
+                if [ "$(id --user)" -eq 0 ]; then
+                    SIMULATED_USER=devuser
+                    SIMULATED_HOME="$PWD/.${SIMULATED_USER}"
+
+                    export USER="$SIMULATED_USER"
+                    export LOGNAME="$SIMULATED_USER"
+
+                    mkdir -p "$SIMULATED_HOME"
+                    export HOME="$SIMULATED_HOME"
+                fi
+
                 echo "Java development environment ready"
                 echo "MAVEN_OPTS set to /tmp/maven-packages"
             '';

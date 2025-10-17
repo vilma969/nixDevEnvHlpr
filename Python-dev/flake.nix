@@ -20,6 +20,17 @@
                 export PYTHONUSERBASE=/tmp/pip-packages
                 export PIP_TARGET=/tmp/pip-packages
 
+                if [ "$(id --user)" -eq 0 ]; then
+                    SIMULATED_USER=devuser
+                    SIMULATED_HOME="$PWD/.${SIMULATED_USER}"
+
+                    export USER="$SIMULATED_USER"
+                    export LOGNAME="$SIMULATED_USER"
+
+                    mkdir -p "$SIMULATED_HOME"
+                    export HOME="$SIMULATED_HOME"
+                fi
+                
                 echo "Python development environment ready"
                 echo "PYTHONUSERBASE and PIP_TARGET set to /tmp/pip-packages"
             '';
