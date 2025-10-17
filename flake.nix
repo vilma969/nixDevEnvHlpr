@@ -12,27 +12,31 @@
         devShells.${system}.default = pkgs.mkShell {
             buildInputs = [
                 pkgs.vscode-fhs
+
                 pkgs.python313
                 pkgs.python313Packages.pip
+
+                pkgs.maven
+                pkgs.jdk25
             ];
             shellHook = ''
                 mkdir -p /tmp/pip-packages
+                mkdir -p /tmp/maven-packages
+
                 export PYTHONUSERBASE=/tmp/pip-packages
                 export PIP_TARGET=/tmp/pip-packages
 
-                if [ "$(id --user)" -eq 0 ]; then
-                    SIMULATED_USER="devuser"
-                    SIMULATED_HOME="$PWD/.${SIMULATED_USER}"
+                export MAVEN_OPTS="-Dmaven.repo.local=/tmp/maven-packages"
 
-                    export USER="${SIMULATED_USER}"
-                    export LOGNAME="${SIMULATED_USER}"
-
-                    mkdir -p "${SIMULATED_HOME}"
-                    export HOME="${SIMULATED_HOME}"
-                fi
+                # --------
                 
                 echo "Python development environment ready"
                 echo "PYTHONUSERBASE and PIP_TARGET set to /tmp/pip-packages"
+
+                echo "Java development environment ready"
+                echo "MAVEN_OPTS set to /tmp/maven-packages"
+
+                echo "C/C++ development environment ready"
             '';
         };
     };
