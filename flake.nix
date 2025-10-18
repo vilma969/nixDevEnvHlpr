@@ -1,5 +1,5 @@
 {
-    description = "Python-dev env w/ python3.13 & pip, set up so pip packages may install without issues";
+    description = "nixDevEnvHelper";
 
     inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
@@ -16,12 +16,17 @@
                 pkgs.python313
                 pkgs.python313Packages.pip
 
-                pkgs.maven
                 pkgs.jdk25
+                pkgs.maven
+
+                pkgs.gcc
+                pkgs.gdb
             ];
             shellHook = ''
                 mkdir -p /tmp/pip-packages
                 mkdir -p /tmp/maven-packages
+
+                # --------
 
                 export PYTHONUSERBASE=/tmp/pip-packages
                 export PIP_TARGET=/tmp/pip-packages
@@ -37,6 +42,14 @@
                 echo "MAVEN_OPTS set to /tmp/maven-packages"
 
                 echo "C/C++ development environment ready"
+
+                # --------
+
+                VSCODE_ROOT_DATA="/tmp/vscode-root-data-${USER:-root}"
+                mkdir -p "${VSCODE_ROOT_DATA}"
+                chmod 0700 "${VSCODE_ROOT_DATA}"
+                
+                code --user-data-dir="${VSCODE_ROOT_DATA}" --no-sandbox
             '';
         };
     };
