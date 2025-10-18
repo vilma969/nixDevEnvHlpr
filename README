@@ -1,9 +1,6 @@
-To start any of the development environments,
+To start any of the build environments,
 you must have Nix installed,
 with experimental features nix-command,
 and flakes in your nix.conf:
 "extra-experimental-features = nix-command flakes",
-then cd into a directory,
-then run "nix develop,
-then in the shell,
-run bash start.sh"
+and then run "nix develop".
