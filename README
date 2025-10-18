@@ -1,4 +1,4 @@
-To start any of the build environments,
+To start the build environment,
 you must have Nix installed,
 with experimental features nix-command,
 and flakes in your nix.conf:
