@@ -47,7 +47,7 @@
 
         # ------------------------
 
-        code --user-data-dir=/tmp/vscodium-data --no-sandbox &
+        bash start.sh
       '';
     };
   };
