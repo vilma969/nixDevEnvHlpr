@@ -47,7 +47,7 @@
 
         # ------------------------
 
-        code --user-data-dir=/tmp/vscodium-data --no-sandbox .. &
+        code --user-data-dir=/tmp/vscodium-data --no-sandbox &
       '';
     };
   };
