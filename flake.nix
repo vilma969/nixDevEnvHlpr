@@ -11,6 +11,8 @@
   {
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = [
+        pkgs.vscodium-fhs
+
         pkgs.python313
         pkgs.python313Packages.pip
 
@@ -24,6 +26,8 @@
         mkdir -p /tmp/pip-packages
         # mkdir -p /tmp/maven-packages
 
+        mkdir -p /tmp/vscodium-data
+
         # ------------------------
 
         export PYTHONUSERBASE=/tmp/pip-packages
@@ -34,14 +38,16 @@
         # ------------------------
                 
         echo "PYTHONUSERBASE and PIP_TARGET set to /tmp/pip-packages"
-        echo "MAVEN_OPTS set to /tmp/maven-packages"
+        # echo "MAVEN_OPTS set to /tmp/maven-packages"
 
         # ------------------------
 
-        python3 -m pip install -r requirements.txt
-        python3 app.py
+        echo "Python dev env ready"
+        # echo "Java dev env ready"
 
-        java App.java
+        # ------------------------
+
+        code --user-data-dir=/tmp/vscodium-data --no-sandbox &
       '';
     };
   };

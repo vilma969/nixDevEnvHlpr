@@ -1,6 +1,10 @@
-To start the build environment,
+To start the dev env,
 you must have Nix installed,
 with experimental features nix-command,
 and flakes in your nix.conf:
 "extra-experimental-features = nix-command flakes",
-and then run "nix develop".
+and then run "nix develop",
+in the directory where the flake.nix is located.
+
+WARNING: vscode is run as super-user because I couldn't make so otherwise,
+so I made it run with obscure flags.
